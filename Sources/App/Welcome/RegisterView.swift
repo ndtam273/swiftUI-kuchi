@@ -32,19 +32,41 @@
 
 import SwiftUI
 
-struct WelcomeView: View {
+struct KuchiTextStyle: TextFieldStyle {
+    public func _body(configuration: TextField<Self._Label>) -> some View {
+        return configuration
+    }
+}
+
+struct RegisterView: View {
+    // MARK: - Properties
+    @State var name: String = ""
+    @ObservedObject var keyboardHandler: KeyboardFollower
+    init(keyboardHandler: KeyboardFollower) {
+        self.keyboardHandler = keyboardHandler
+    }
+    // MARK: - Body
     var body: some View {
-        ZStack {
-            WelcomeBackgroundImage()
+        VStack{
+            Spacer()
+            
             WelcomeMessageView()
+            VStack {
+                TextField("Type your name...", text: $name)
+                    .bordered()
+            }
+                
+            
+            Spacer()
         }
-
+        .padding()
+        .background(WelcomeBackgroundImage())
+        
     }
 }
 
-struct WelcomeView_Previews: PreviewProvider {
+struct RegisterView_Previews: PreviewProvider {
     static var previews: some View {
-        WelcomeView()
+        RegisterView(keyboardHandler: KeyboardFollower())
     }
 }
-
