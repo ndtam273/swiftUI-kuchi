@@ -31,6 +31,7 @@
 		F74018F42587599A0045ADD9 /* ChoicesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74018ED2587599A0045ADD9 /* ChoicesView.swift */; };
 		F74018F725875E500045ADD9 /* StarterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74018F625875E500045ADD9 /* StarterView.swift */; };
 		F742737C25837E9B00960C82 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F742737B25837E9B00960C82 /* WelcomeView.swift */; };
+		F7767BA12588C9F300640502 /* ScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7767BA02588C9F300640502 /* ScoreView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +62,7 @@
 		F74018ED2587599A0045ADD9 /* ChoicesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChoicesView.swift; sourceTree = "<group>"; };
 		F74018F625875E500045ADD9 /* StarterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarterView.swift; sourceTree = "<group>"; };
 		F742737B25837E9B00960C82 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		F7767BA02588C9F300640502 /* ScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,6 +193,7 @@
 				F74018EC258759990045ADD9 /* CongratulationsView.swift */,
 				F74018EA258759990045ADD9 /* PracticeView.swift */,
 				F74018E7258759990045ADD9 /* QuestionView.swift */,
+				F7767BA02588C9F300640502 /* ScoreView.swift */,
 			);
 			path = Practice;
 			sourceTree = "<group>";
@@ -281,6 +284,7 @@
 				F742737C25837E9B00960C82 /* WelcomeView.swift in Sources */,
 				F74018772587185B0045ADD9 /* WelcomeMessageView.swift in Sources */,
 				F74018F02587599A0045ADD9 /* ChallengesViewModel.swift in Sources */,
+				F7767BA12588C9F300640502 /* ScoreView.swift in Sources */,
 				F74018EE2587599A0045ADD9 /* QuestionView.swift in Sources */,
 				F74018742587175B0045ADD9 /* LogoImage.swift in Sources */,
 				F7401866258715DB0045ADD9 /* UserManager.swift in Sources */,
