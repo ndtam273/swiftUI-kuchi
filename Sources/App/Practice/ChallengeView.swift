@@ -33,16 +33,37 @@
 import SwiftUI
 
 struct ChallengeView: View {
-  var body: some View {
-    Image("welcome-background")
-        .resizable()
-        .frame(width: 100, height: 50, alignment: .center)
-        .background(Color.yellow)
-  }
+    // MARK: - Properties
+    let challengeTest: ChallengeTest
+    @State var showAnswers = false
+    var body: some View {
+        VStack {
+            Button(action: {
+                self.showAnswers = !self.showAnswers
+            }) {
+                QuestionView(question: challengeTest.challenge.question)
+                    .frame(height: 300)
+            }
+            if showAnswers {
+                Divider()
+                ChoicesView(challengeTest: challengeTest)
+                    .frame(height: 300)
+                    .padding()
+            }
+        }
+    }
 }
 
 struct ChallengeView_Previews: PreviewProvider {
-  static var previews: some View {
-    ChallengeView()
-  }
+    static let challengeTest = ChallengeTest(
+        challenge: Challenge(
+            question: "おねがいします",
+            pronunciation: "onegaishimasu",
+            answer: "Please"),
+        answers: ["Thank you", "Hello", "Goodbye"]
+    )
+    
+    static var previews: some View {
+         ChallengeView(challengeTest: challengeTest)
+    }
 }
