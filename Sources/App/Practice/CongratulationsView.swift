@@ -33,9 +33,9 @@
 import SwiftUI
 
 struct CongratulationsView: View {
+  @EnvironmentObject var challengesViewModel: ChallengesViewModel
   let avatarSize: CGFloat = 120
   let userName: String
-  @ObservedObject var challengeViewModel = ChallengesViewModel()
   
   init(userName: String) {
     self.userName = userName
@@ -43,48 +43,52 @@ struct CongratulationsView: View {
   
   var body: some View {
     VStack {
-        Text("Congratulations!")
-            .font(.title)
-            .foregroundColor(.gray)
-        Spacer()
-        ZStack {
-            VStack(spacing: 0) {
-                Rectangle()
-                    .frame(height: 90)
-                    .foregroundColor(.blue).opacity(0.2)
-                Rectangle()
-                    .frame(height: 90)
-                    .foregroundColor(.red).opacity(0.6)
-                
-            }
-            Image(systemName: "person.fill")
-                .resizable()
-                .padding()
-                .frame(width: avatarSize, height: avatarSize)
-                .background(Color.white.opacity(0.5))
-                .cornerRadius(avatarSize / 2, antialiased: true)
-                .shadow(radius: 4)
-            VStack {
-                Spacer()
-                Text(userName)
-                    .font(.largeTitle)
-                    .foregroundColor(.white)
-                    .fontWeight(.bold)
-                    .shadow(radius: 7)
-                }
-            .padding()
-            
+      Spacer()
+
+      Text("Congratulations!")
+        .font(.title)
+        .foregroundColor(.gray)
+      
+      ZStack {
+        VStack(spacing: 0) {
+          Rectangle()
+            .frame(height: 90)
+            .foregroundColor(Color(red: 0.5, green: 0, blue: 0).opacity(0.2))
+          Rectangle()
+            .frame(height: 90)
+            .foregroundColor(Color(red: 0.6, green: 0.1, blue: 0.1).opacity(0.4))
         }
-        .frame(height: 180)
-        Text("You're awsome!")
+        
+        Image(systemName: "person.fill")
+          .resizable()
+          .padding()
+          .frame(width: avatarSize, height: avatarSize)
+          .background(Color.white.opacity(0.5))
+          .cornerRadius(avatarSize / 2, antialiased: true)
+          .shadow(radius: 4)
+        
+        VStack() {
+          Spacer()
+          Text(userName)
+            .font(.largeTitle)
+            .foregroundColor(.white)
             .fontWeight(.bold)
-            .foregroundColor(.gray)
-        Spacer()
-        Button(action: {
-            self.challengeViewModel.restart()
-        }, label: {
-            Text("Play Again")
-        })
+            .shadow(radius: 7)
+        }.padding()
+      }
+      .frame(height: 180)
+      
+      Text("You're awesome!")
+        .fontWeight(.bold)
+        .foregroundColor(.gray)
+      
+      Spacer()
+      
+      Button(action: {
+        self.challengesViewModel.restart()
+      }, label: {
+        Text("Play Again")
+      })
         .padding(.bottom)
     }
   }
