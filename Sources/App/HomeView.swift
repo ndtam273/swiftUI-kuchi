@@ -32,39 +32,42 @@
 
 import SwiftUI
 
-struct WelcomeView: View {
-  @EnvironmentObject var userManager: UserManager
-  @State var showPractice = false
-
-  @ViewBuilder
-  var body: some View {
-    if showPractice {
-      HomeView()
-    } else {
-      ZStack {
-        WelcomeBackgroundImage()
-        VStack {
-          Text(verbatim: "Hi, \(userManager.profile.name)")
-
-          WelcomeMessageView()
-
-          Button(action: {
-            self.showPractice = true
-          }, label: {
-            HStack {
-              Image(systemName: "play")
-              Text(verbatim: "Start")
+struct HomeView: View {
+    @EnvironmentObject var userManager: UserManager
+    @EnvironmentObject var challengesViewModel: ChallengesViewModel
+    var body: some View {
+        TabView{
+            LearnView()
+                .tabItem {
+                    VStack {
+                        Image(systemName: "bookmark")
+                        Text("Learn")
+                    }
+                }
+                .tag(0)
+            PracticeView(
+              challengeTest: $challengesViewModel.currentChallenge,
+              userName: $userManager.profile.name,
+              numberOfAnswered: .constant(challengesViewModel.numberOfAnswered)
+            )
+            .tabItem {
+                VStack {
+                    Image(systemName: "rectangle.dock")
+                    Text("Challenge")
+                }
+                .tag(1)
+                .environment(\.questionsPerSession, challengesViewModel.numberOfQuestions)
             }
-          })
+              
         }
-      }
+        .accentColor(.orange)
     }
-  }
 }
 
-struct WelcomeView_Previews: PreviewProvider {
-  static var previews: some View {
-    WelcomeView()
-      .environmentObject(UserManager())
-  }
+struct HomeView_Previews: PreviewProvider {
+    static var previews: some View {
+        HomeView()
+            .environmentObject(UserManager())
+            .environmentObject(ChallengesViewModel())
+    }
 }
