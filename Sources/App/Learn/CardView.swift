@@ -32,27 +32,53 @@
 
 import SwiftUI
 
-struct LearnView: View {
-    // MARK: - Properties
-    @ObservedObject var learningStore = LearningStore(deck: ChallengesViewModel().challenges)
+struct CardView: View {
+    //MARK: - Properties
+    @State var revealed = false
+    typealias CardDrag = (_ card: FlashCard, _ direction: DiscardedDirection) -> Void
+    let dragged: CardDrag
+    let flashCard: FlashCard
+    
+    init(_ card: FlashCard, onDrag dragged: @escaping CardDrag = {_, _ in} ) {
+        self.flashCard = card
+        self.dragged = dragged
+    }
     var body: some View {
-        VStack {
-            Spacer()
-            Text("Swipe left if you remembered"
-            + "\nSwipe right if you didn't")
-                .font(.headline)
-            DeckView(
-                onMemorized: { self.learningStore.score += 1 },
-                deck: learningStore.deck
-            )
-            Spacer()
-            Text("Remembered \(self.learningStore.score)" + "\(self.learningStore.deck.cards.count)")
+        ZStack {
+            Rectangle()
+                .fill(Color.red)
+                .frame(width: 300, height: 200)
+                .cornerRadius(12)
+            VStack {
+                Spacer()
+                Text(flashCard.card.question)
+                    .font(.largeTitle)
+                    .foregroundColor(.white)
+                if self.revealed {
+                    Text(flashCard.card.answer)
+                        .font(.caption)
+                        .foregroundColor(.white)
+                }
+                
+                Spacer()
+            }
         }
+        .shadow(radius: 8)
+        .frame(width: 300, height: 200)
+        .animation(.spring())
+        .gesture(TapGesture()
+                    .onEnded {
+                        withAnimation(.easeIn, {
+                            self.revealed = !self.revealed
+                        })
+                    })
     }
 }
 
-struct LearnView_Previews: PreviewProvider {
+struct CardView_Previews: PreviewProvider {
+    
     static var previews: some View {
-        LearnView()
+        let card = FlashCard(card: Challenge(question: "Apple", pronunciation: "Apple", answer: "apuru"))
+        CardView(card)
     }
 }

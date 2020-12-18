@@ -32,27 +32,53 @@
 
 import SwiftUI
 
-struct LearnView: View {
+enum DiscardedDirection {
+    case left
+    case right
+}
+
+struct DeckView: View {
     // MARK: - Properties
-    @ObservedObject var learningStore = LearningStore(deck: ChallengesViewModel().challenges)
+    @ObservedObject var deck: FlashDeck
+    let onMemorized:() -> Void
+    
+    init(onMemorized: @escaping () -> Void, deck: FlashDeck) {
+        self.onMemorized = onMemorized
+        self.deck = deck
+    }
+    
     var body: some View {
-        VStack {
-            Spacer()
-            Text("Swipe left if you remembered"
-            + "\nSwipe right if you didn't")
-                .font(.headline)
-            DeckView(
-                onMemorized: { self.learningStore.score += 1 },
-                deck: learningStore.deck
-            )
-            Spacer()
-            Text("Remembered \(self.learningStore.score)" + "\(self.learningStore.deck.cards.count)")
+        ZStack {
+            ForEach(deck.cards.filter { $0.isActive }) { card in
+                self.getCardView(for: card) }
         }
+    }
+    
+    func getCardView(for card: FlashCard) -> CardView {
+        let activeCards = deck.cards.filter{ $0.isActive }
+        if let lastCard = activeCards.last {
+            if lastCard == card {
+                return createCardView(for: card)
+            }
+        }
+        let view = createCardView(for: card)
+        return view
+    }
+    
+    func createCardView(for card: FlashCard) -> CardView {
+        let view = CardView(card, onDrag: {
+            card, direction in
+            if direction == .left {
+                self.onMemorized()
+            }
+        })
+        return view
     }
 }
 
-struct LearnView_Previews: PreviewProvider {
+struct DeckView_Previews: PreviewProvider {
     static var previews: some View {
-        LearnView()
+        DeckView(onMemorized: {},
+                 deck: FlashDeck(from: ChallengesViewModel().challenges))
     }
 }

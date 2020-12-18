@@ -32,6 +32,8 @@
 		6758886022DA0C0B0015DE4B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6758885F22DA0C0B0015DE4B /* Preview Assets.xcassets */; };
 		6758886322DA0C0B0015DE4B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6758886122DA0C0B0015DE4B /* LaunchScreen.storyboard */; };
 		67D0F51022E70EE6009CC869 /* jp.json in Resources */ = {isa = PBXBuildFile; fileRef = 67D0F50F22E70EE6009CC869 /* jp.json */; };
+		F7396980258C66AF00B96C4F /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F739697F258C66AE00B96C4F /* CardView.swift */; };
+		F7396983258C689300B96C4F /* DeckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7396982258C689300B96C4F /* DeckView.swift */; };
 		F73F85FC258B655A0028BFE7 /* LearnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73F85FB258B655A0028BFE7 /* LearnView.swift */; };
 		F73F8600258B65B50028BFE7 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73F85FF258B65B50028BFE7 /* HomeView.swift */; };
 		F73F8603258B6D1D0028BFE7 /* FlashCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73F8602258B6D1D0028BFE7 /* FlashCard.swift */; };
@@ -68,6 +70,8 @@
 		6758886422DA0C0B0015DE4B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6758888C22DA0F3C0015DE4B /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		67D0F50F22E70EE6009CC869 /* jp.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = jp.json; sourceTree = "<group>"; };
+		F739697F258C66AE00B96C4F /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		F7396982258C689300B96C4F /* DeckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckView.swift; sourceTree = "<group>"; };
 		F73F85FB258B655A0028BFE7 /* LearnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnView.swift; sourceTree = "<group>"; };
 		F73F85FF258B65B50028BFE7 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		F73F8602258B6D1D0028BFE7 /* FlashCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCard.swift; sourceTree = "<group>"; };
@@ -217,6 +221,8 @@
 				F73F8602258B6D1D0028BFE7 /* FlashCard.swift */,
 				F73F8605258B709C0028BFE7 /* FlashDeck.swift */,
 				F73F8608258B73570028BFE7 /* LearningStore.swift */,
+				F739697F258C66AE00B96C4F /* CardView.swift */,
+				F7396982258C689300B96C4F /* DeckView.swift */,
 			);
 			path = Learn;
 			sourceTree = "<group>";
@@ -297,7 +303,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				5764106123304B400060CADD /* ChoicesView.swift in Sources */,
+				F7396980258C66AF00B96C4F /* CardView.swift in Sources */,
 				6758885722DA0C090015DE4B /* AppDelegate.swift in Sources */,
+				F7396983258C689300B96C4F /* DeckView.swift in Sources */,
 				577C653922FEF27800788AED /* BorderedViewModifier.swift in Sources */,
 				F73F85FC258B655A0028BFE7 /* LearnView.swift in Sources */,
 				57EC3B4922FE395600C2609A /* Profile.swift in Sources */,
